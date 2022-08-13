@@ -46,7 +46,8 @@ let playGame = function () {
   let playerScore = 0;
 
   while (playerScore < 5 && computerScore < 5) {
-    let gameOutcome = playRound('paper', getComputerChoice());
+    let playerSelection = prompt('Your choice?');
+    let gameOutcome = playRound(playerSelection, getComputerChoice());
     if (gameOutcome.result == 'w') {
       playerScore++;
     } else if (gameOutcome.result == 'l') {

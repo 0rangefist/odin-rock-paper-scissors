@@ -35,9 +35,9 @@ let playRound = function (playerSelection, computerSelection) {
 
 let determineWinner = function (playerScore) {
   if (playerScore == 5) {
-    return 'You Won!';
+    return 'End of Game. You Won!';
   } else {
-    return 'You Lost!';
+    return 'End of Game. You Lost!';
   }
 };
 
@@ -46,17 +46,17 @@ let playGame = function () {
   let playerScore = 0;
 
   while (playerScore < 5 && computerScore < 5) {
-    let gameOutcome = playRound('rock', getComputerChoice());
+    let gameOutcome = playRound('paper', getComputerChoice());
     if (gameOutcome.result == 'w') {
       playerScore++;
     } else if (gameOutcome.result == 'l') {
       computerScore++;
     }
-    console.log(gameOutcome.message);
+    console.log(`You:${playerScore} - Computer:${computerScore}
+${gameOutcome.message}`);
   }
 
-  console.log(`${determineWinner(playerScore)}
-You:${playerScore} - Computer:${computerScore}`);
-};
+  console.log(`${determineWinner(playerScore)}`);
+}
 
 playGame();

@@ -1,0 +1,81 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: #222831;
+}
+
+header {
+  padding: 1rem;
+  color: aliceblue;
+}
+
+header h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 24px;
+}
+
+main {
+  /* display: flex;
+  flex-direction: column; */
+  height: 100%;
+  width: 100%;
+}
+
+main .game-screen {
+  /* background: repeating-conic-gradient(
+      hsla(186deg 100% 50%/31%) 0 15deg,
+      hsla(0, 0%, 100%, 0) 0deg 30deg
+    )
+    #1c2c3c; */
+  height: 85%;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+main .player-choice {
+  height: 15%;
+}
+
+@property --a {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 90deg;
+}
+
+.game-screen {
+  /*  needed for firefox to have a valid output */
+  --a: 0deg;
+  /**/
+  transition: --a 0.5s 0.1s;
+  background: repeating-conic-gradient(
+      hsla(186deg 100% 50%/31%) calc(0deg + var(--a)) calc(15deg + var(--a)),
+      hsla(0, 0%, 100%, 0) calc(0deg + var(--a)) calc(30deg + var(--a))
+    )
+    #1c2c3c;
+
+  animation: a 100s linear infinite;
+}
+
+@keyframes a {
+  from {
+    --a: 0deg;
+  }
+  to {
+    --a: 300deg;
+  }
+}

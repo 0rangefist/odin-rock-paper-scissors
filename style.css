@@ -113,7 +113,13 @@ main .game-screen {
 .player-choice button:nth-child(3) {
   background-image: url(images/scissors-icon.png);
 }
- .player > div {
+
+.player {
+  display: flex;
+  align-items: center;
+}
+
+.player > div {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -121,22 +127,47 @@ main .game-screen {
   width: 50vw;
 }
 
-.game-screen .player-rock {
+.player-rock {
   display: none;
   background-image: url(./images/rock-player.png);
 }
 
-.game-screen .player-paper {
+.player-paper {
   display: block;
   background-image: url(./images/paper-player.png);
 }
-`
-.game-screen .player-scissors {
+
+.player-scissors {
   display: none;
   background-image: url(./images/scissors-player.png);
 }
 
-.player {
+/* computer */
+
+.computer {
   display: flex;
   align-items: center;
+}
+
+.computer > div {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 500px;
+  width: 50vw;
+}
+
+.computer-rock {
+  display: block;
+  background-image: url(./images/rock-cpu.png);
+}
+
+.computer-paper {
+  display: none;
+  background-image: url(./images/paper-cpu.png);
+}
+
+.computer-scissors {
+  display: none;
+  background-image: url(./images/scissors-cpu.png);
 }

@@ -41,13 +41,41 @@ let determineWinner = function (playerScore) {
   }
 };
 
+//get player selection buttons, player & computer divs(which hold the graphic sprites)
 let playerButtons = document.querySelectorAll('.container button');
+let playerDivs = document.querySelectorAll('.player>div');
+let computerDivs = document.querySelectorAll('.computer>div');
 
 playerButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
-    //console.log('button clicked', button.className);
+    //get player & computer selections
     let playerSelection = button.className;
-    let gameOutcome = playRound(playerSelection, getComputerChoice());
+    let computerSelection = getComputerChoice();
+    console.log(
+      `Player:${playerSelection.toUpperCase()} - Computer:${computerSelection.toUpperCase()}`
+    );
+
+    //turn on selected player div(graphic) & turn off unselected
+    playerDivs.forEach((playerDiv) => {
+      console.log('PLAYER DIV', playerDiv.className);
+      if ('player-' + playerSelection == playerDiv.className) {
+        playerDiv.style.display = 'block';
+      } else {
+        playerDiv.style.display = 'none';
+      }
+    });
+
+    //turn on selected computer div(graphic) & turn off unselected
+    computerDivs.forEach((computerDiv) => {
+      console.log('COMPUTER DIV', computerDiv.className);
+      if ('computer-' + computerSelection == computerDiv.className) {
+        computerDiv.style.display = 'block';
+      } else {
+        computerDiv.style.display = 'none';
+      }
+    });
+
+    let gameOutcome = playRound(playerSelection, computerSelection);
     console.log(gameOutcome.message);
   });
 });

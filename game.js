@@ -45,7 +45,10 @@ let playerButtons = document.querySelectorAll('.container button');
 
 playerButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
-    console.log('button clicked', button.className);
+    //console.log('button clicked', button.className);
+    let playerSelection = button.className;
+    let gameOutcome = playRound(playerSelection, getComputerChoice());
+    console.log(gameOutcome.message);
   });
 });
 

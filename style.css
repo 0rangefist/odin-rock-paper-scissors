@@ -38,6 +38,8 @@ main .game-screen {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 @property --a {
@@ -110,4 +112,31 @@ main .game-screen {
 
 .player-choice button:nth-child(3) {
   background-image: url(images/scissors-icon.png);
+}
+ .player > div {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 500px;
+  width: 50vw;
+}
+
+.game-screen .player-rock {
+  display: none;
+  background-image: url(./images/rock-player.png);
+}
+
+.game-screen .player-paper {
+  display: block;
+  background-image: url(./images/paper-player.png);
+}
+`
+.game-screen .player-scissors {
+  display: none;
+  background-image: url(./images/scissors-player.png);
+}
+
+.player {
+  display: flex;
+  align-items: center;
 }

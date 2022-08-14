@@ -41,23 +41,31 @@ let determineWinner = function (playerScore) {
   }
 };
 
-let playGame = function () {
-  let computerScore = 0;
-  let playerScore = 0;
+let playerButtons = document.querySelectorAll('.container button');
 
-  while (playerScore < 5 && computerScore < 5) {
-    let playerSelection = prompt('Your choice?');
-    let gameOutcome = playRound(playerSelection, getComputerChoice());
-    if (gameOutcome.result == 'w') {
-      playerScore++;
-    } else if (gameOutcome.result == 'l') {
-      computerScore++;
-    }
-    console.log(`You:${playerScore} - Computer:${computerScore}
-${gameOutcome.message}`);
-  }
+playerButtons.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    console.log('button clicked', button.className);
+  });
+});
 
-  console.log(`${determineWinner(playerScore)}`);
-}
+// let playGame = function () {
+//   let computerScore = 0;
+//   let playerScore = 0;
 
-playGame();
+//   while (playerScore < 5 && computerScore < 5) {
+//     let playerSelection = prompt('Your choice?');
+//     let gameOutcome = playRound(playerSelection, getComputerChoice());
+//     if (gameOutcome.result == 'w') {
+//       playerScore++;
+//     } else if (gameOutcome.result == 'l') {
+//       computerScore++;
+//     }
+//     console.log(`You:${playerScore} - Computer:${computerScore}
+// ${gameOutcome.message}`);
+//   }
+
+//   console.log(`${determineWinner(playerScore)}`);
+// }
+
+// playGame();

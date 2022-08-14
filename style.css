@@ -18,7 +18,7 @@ body {
 }
 
 header {
-  padding: 1rem;
+  padding: 4vh;
   color: aliceblue;
 }
 
@@ -29,26 +29,15 @@ header h1 {
 }
 
 main {
-  /* display: flex;
-  flex-direction: column; */
   height: 100%;
   width: 100%;
 }
 
 main .game-screen {
-  /* background: repeating-conic-gradient(
-      hsla(186deg 100% 50%/31%) 0 15deg,
-      hsla(0, 0%, 100%, 0) 0deg 30deg
-    )
-    #1c2c3c; */
   height: 85%;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-}
-
-main .player-choice {
-  height: 15%;
 }
 
 @property --a {
@@ -78,4 +67,47 @@ main .player-choice {
   to {
     --a: 300deg;
   }
+}
+
+.player-choice {
+  display: flex;
+  justify-content: center;
+  height: 15%;
+}
+
+.container {
+  margin: auto 0;
+  padding: 0;
+  height: auto;
+}
+
+.player-choice button {
+  background-color: #eb9900;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 10vh;
+  width: 10vh;
+  margin: 0 1.5vw;
+  border-style: inherit;
+  border-radius: 3px;
+}
+
+.player-choice button:hover {
+  background-color: rgb(255, 174, 0);
+}
+
+.player-choice button:active {
+  transform: translateY(1px);
+}
+
+.player-choice button:nth-child(1) {
+  background-image: url(images/rock-icon.png);
+}
+
+.player-choice button:nth-child(2) {
+  background-image: url(images/paper-icon.png);
+}
+
+.player-choice button:nth-child(3) {
+  background-image: url(images/scissors-icon.png);
 }

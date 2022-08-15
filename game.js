@@ -46,8 +46,52 @@ let playerButtons = document.querySelectorAll('.container button');
 let playerDivs = document.querySelectorAll('.player>div');
 let computerDivs = document.querySelectorAll('.computer>div');
 
+// get player & computer scores divs
+let playerScorePara = document.querySelector('.p-score');
+let computerScorePara = document.querySelector('.c-score');
+let playerScore = 0;
+let computerScore = 0;
+
+//get play again button
+let playAgainButton = document.querySelector('.play-again');
+
+//get gameover message paragraph
+let gameOverPara = document.querySelector('.game-over');
+
+//get modal
+let gameOverModal = document.querySelector('.modal');
+
+//get heading
+let gameStatsText = document.querySelector('.game-stats>p');
+
+//get music and sfx files
+let music = new Audio('./audio/rock-song.mp3');
+let audio1 = new Audio('./audio/punch.mp3');
+let audio2 = new Audio('./audio/voice1.wav');
+let audio3 = new Audio('./audio/voice2.wav');
+
+audio1.volume - 0.8;
+audio2.volume = 0.6;
+audio3.volume = 0.7;
+
+function delay(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+
 playerButtons.forEach((button) => {
   button.addEventListener('click', (e) => {
+    
+    gameStatsText.textContent = '';
+    music.loop = true;
+    music.play();
+    audio1.play();
+    audio2.play();
+
+    delay(80).then(() => {
+      audio3.play();
+    });
+
     //get player & computer selections
     let playerSelection = button.className;
     let computerSelection = getComputerChoice();
@@ -89,26 +133,33 @@ playerButtons.forEach((button) => {
 
     let gameOutcome = playRound(playerSelection, computerSelection);
     console.log(gameOutcome.message);
+    delay(600).then(() => {
+      gameStatsText.textContent = gameOutcome.message;
+    });
+    
+
+    if (gameOutcome.result == 'w') {
+      playerScore++;
+    } else if (gameOutcome.result == 'l') {
+      computerScore++;
+    } else if (gameOutcome.result == 'd') {
+      //draw
+    }
+
+    playerScorePara.textContent = playerScore;
+    computerScorePara.textContent = computerScore;
+
+    if (playerScore == 5 || computerScore == 5) {
+
+      gameOverModal.classList.add('show-modal');
+      gameOverPara.textContent = determineWinner(playerScore);
+      playAgainButton.addEventListener('click', (e) => {
+        computerScore = 0;
+        playerScore = 0;
+        playerScorePara.textContent = playerScore;
+        computerScorePara.textContent = computerScore;
+        gameOverModal.classList.remove('show-modal');
+      });
+    }
   });
 });
-
-// let playGame = function () {
-//   let computerScore = 0;
-//   let playerScore = 0;
-
-//   while (playerScore < 5 && computerScore < 5) {
-//     let playerSelection = prompt('Your choice?');
-//     let gameOutcome = playRound(playerSelection, getComputerChoice());
-//     if (gameOutcome.result == 'w') {
-//       playerScore++;
-//     } else if (gameOutcome.result == 'l') {
-//       computerScore++;
-//     }
-//     console.log(`You:${playerScore} - Computer:${computerScore}
-// ${gameOutcome.message}`);
-//   }
-
-//   console.log(`${determineWinner(playerScore)}`);
-// }
-
-// playGame();

@@ -1,252 +1,309 @@
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-    background-color: #222831;
+  overflow: hidden;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: #222831;
+  font-family: sans-serif;
 }
 
 header {
-    padding: 4vh;
-    color: aliceblue;
+  padding: 4vh;
+  color: aliceblue;
 }
 
 header h1 {
-    margin: 0;
-    text-align: center;
-    font-size: 24px;
+  margin: 0;
+  text-align: center;
+  font-size: 24px;
 }
 
 main {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 /* main game screen */
 main .game-screen {
-    height: 85%;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
+  height: 85%;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 @property --a {
-    syntax: '<angle>';
-    inherits: false;
-    initial-value: 90deg;
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 90deg;
 }
 
 .game-screen {
-    /*  needed for firefox to have a valid output */
-    --a: 0deg;
-    transition: --a 0.5s 0.1s;
-    background: repeating-conic-gradient(hsla(186deg 100% 50%/31%) calc(0deg + var(--a)) calc(15deg + var(--a)),
-            hsla(0, 0%, 100%, 0) calc(0deg + var(--a)) calc(30deg + var(--a))) #1c2c3c;
-    animation: a 100s linear infinite;
+  /*  needed for firefox to have a valid output */
+  --a: 0deg;
+  transition: --a 0.5s 0.1s;
+  background: repeating-conic-gradient(
+      hsla(186deg 100% 50%/31%) calc(0deg + var(--a)) calc(15deg + var(--a)),
+      hsla(0, 0%, 100%, 0) calc(0deg + var(--a)) calc(30deg + var(--a))
+    )
+    #1c2c3c;
+  animation: a 100s linear infinite;
 }
 
 @keyframes a {
-    from {
-        --a: 0deg;
-    }
+  from {
+    --a: 0deg;
+  }
 
-    to {
-        --a: 300deg;
-    }
+  to {
+    --a: 300deg;
+  }
 }
 
 /* player choice buttons */
 .player-choice {
-    display: flex;
-    justify-content: center;
-    height: 15%;
+  display: flex;
+  justify-content: center;
+  height: 15%;
 }
 
 .container {
-    margin: auto 0;
-    padding: 0;
-    height: auto;
+  margin: auto 0;
+  padding: 0;
+  height: auto;
 }
 
 .player-choice button {
-    background-color: #eb9900;
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 10vh;
-    width: 10vh;
-    margin: 0 1.5vw;
-    border-style: inherit;
-    border-radius: 3px;
+  background-color: #ffa600;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 10vh;
+  width: 10vh;
+  margin: 0 1.5vw;
+  border-style: inherit;
+  border-radius: 3px;
 }
 
 .player-choice button:hover {
-    background-color: rgb(255, 174, 0);
+  background-color: rgb(255, 194, 62);
 }
 
 .player-choice button:active {
-    transform: translateY(1px);
+  transform: translateY(1px);
 }
 
 .player-choice button:nth-child(1) {
-    background-image: url(images/rock-icon.png);
+  background-image: url(images/rock-icon.png);
 }
 
 .player-choice button:nth-child(2) {
-    background-image: url(images/paper-icon.png);
+  background-image: url(images/paper-icon.png);
 }
 
 .player-choice button:nth-child(3) {
-    background-image: url(images/scissors-icon.png);
+  background-image: url(images/scissors-icon.png);
 }
 
 /* player */
 .player {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-
-.player>div {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 500px;
-    width: 50vw;
-    /* transition: all 0.2s linear; */
-
+.player > div {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 500px;
+  width: 50vw;
+  /* transition: all 0.2s linear; */
 }
 
 .player-rock {
-    display: none;
-    background-image: url(./images/rock-player.png);
+  display: none;
+  background-image: url(./images/rock-player.png);
 }
 
 .player-paper {
-    display: none;
-    background-image: url(./images/paper-player.png);
+  display: none;
+  background-image: url(./images/paper-player.png);
 }
 
 .player-scissors {
-    display: none;
-    background-image: url(./images/scissors-player.png);
+  display: none;
+  background-image: url(./images/scissors-player.png);
 }
 
 /* computer */
 .computer {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-.computer>div {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 500px;
-    width: 50vw;
+.computer > div {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 500px;
+  width: 50vw;
 }
 
 .computer-rock {
-    display: none;
-    background-image: url(./images/rock-cpu.png);
+  display: none;
+  background-image: url(./images/rock-cpu.png);
 }
 
 .computer-paper {
-    display: none;
-    background-image: url(./images/paper-cpu.png);
+  display: none;
+  background-image: url(./images/paper-cpu.png);
 }
 
 .computer-scissors {
-    display: none;
-    background-image: url(./images/scissors-cpu.png);
+  display: none;
+  background-image: url(./images/scissors-cpu.png);
 }
 
-.display{
-    display: block;
+.display {
+  display: block;
 }
 
-.pulse-a{
-    animation-duration: 3s;
-    animation-name: hover;
-    animation-timing-function: ease-in-out; 
-    animation-iteration-count: infinite;
+.pulse-a {
+  animation-duration: 3s;
+  animation-name: hover;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
-.pulse-b{
-    animation-duration: 3s;
-    animation-delay: 200ms;
-    animation-name: hover;
-    animation-timing-function: ease-in-out; 
-    animation-iteration-count: infinite;
+.pulse-b {
+  animation-duration: 3s;
+  animation-delay: 200ms;
+  animation-name: hover;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
 @keyframes hover {
-    0% {
-        /* margin-left: 100%;
-        width: 300% */
-        transform: scale(0.92);
-    }
+  0% {
+    transform: scale(0.92);
+  }
 
-    50% {
-        transform: scale(1);
-    }
+  50% {
+    transform: scale(1);
+  }
 
-    100% {
-        /* margin-left: 0%;
-        width: 100%; */
-        transform: scale(0.92);
-    }
+  100% {
+    transform: scale(0.92);
+  }
 }
 
 .player-animation {
-    /* transition: all 0.2s linear; */
-    /* animation-duration: 1s;
-    animation-name: slidefromleft; */
-    animation: slidefromleft 1s;
+  animation: slidefromleft 1s;
 }
 
 @keyframes slidefromleft {
-    from {
-        /* margin-left: 100%;
-        width: 300% */
-        transform: translate(-40vw, 0);
-    }
+  from {
+    transform: translate(-40vw, 0);
+  }
 
-    to {
-        /* margin-left: 0%;
-        width: 100%; */
-        transform: translate(0);
-    }
+  to {
+    transform: translate(0);
+  }
 }
 
 .computer-animation {
-    /* transition: all 0.2s linear; */
-    animation-duration: 1s;
-    animation-name: slidefromright;
+  animation-duration: 1s;
+  animation-name: slidefromright;
 }
 
 @keyframes slidefromright {
-    from {
-        /* margin-left: 100%;
-        width: 300% */
-        transform: translate(40vw, 0);
-    }
+  from {
+    transform: translate(40vw, 0);
+  }
 
-    to {
-        /* margin-left: 0%;
-        width: 100%; */
-        transform: translate(0);
-    }
+  to {
+    transform: translate(0);
+  }
+}
+
+/* score details */
+
+.player-score, .computer-score {
+  color: white;
+  font-size: 28px;
+  text-align: center;
+}
+
+.p-score, .c-score{
+    font-size: 36px;
+    font-weight: 900;
+    margin: 0;
+}
+
+
+.info{
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.game-stats{
+    position: absolute;
+    width: 100%;
+    bottom: 15vh;
+    text-align: center;
+    color: white;
+    font-size:26px;
+}
+
+/* modal */
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    z-index: 1;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.play-again{
+    /* height: 5vh; */
+    font-size: 20px;
+    padding: 2vh 2vw;
 }

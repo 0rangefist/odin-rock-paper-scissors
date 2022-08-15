@@ -58,20 +58,32 @@ playerButtons.forEach((button) => {
     //turn on selected player div(graphic) & turn off unselected
     playerDivs.forEach((playerDiv) => {
       console.log('PLAYER DIV', playerDiv.className);
-      if ('player-' + playerSelection == playerDiv.className) {
-        playerDiv.style.display = 'block';
+      if (playerDiv.className.includes(playerSelection)) {
+        //playerDiv.style.display = 'block';
+        playerDiv.classList.add('player-animation');
+        playerDiv.classList.add('display');
+        playerDiv.addEventListener('animationend', (e) => {
+          playerDiv.classList.remove('player-animation');
+        });
       } else {
-        playerDiv.style.display = 'none';
+        //playerDiv.style.display = 'none';
+        playerDiv.classList.remove('display');
       }
     });
 
     //turn on selected computer div(graphic) & turn off unselected
     computerDivs.forEach((computerDiv) => {
       console.log('COMPUTER DIV', computerDiv.className);
-      if ('computer-' + computerSelection == computerDiv.className) {
-        computerDiv.style.display = 'block';
+      if (computerDiv.className.includes(computerSelection)) {
+        // computerDiv.style.display = 'block';
+        computerDiv.classList.add('computer-animation');
+        computerDiv.classList.add('display');
+        computerDiv.addEventListener('animationend', (e) => {
+          computerDiv.classList.remove('computer-animation');
+        });
       } else {
-        computerDiv.style.display = 'none';
+        // computerDiv.style.display = 'none';
+        computerDiv.classList.remove('display');
       }
     });
 
